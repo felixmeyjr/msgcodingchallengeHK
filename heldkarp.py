@@ -158,7 +158,7 @@ od = heldkarp(file)
 # print("Cost = ", cost)
 # print("Path = ", path)
 
-# optimal path [0, 11, 15, 19, 18, 3, 20, 7, 12, 5, 6, 14, 13, 17, 9, 10, 2, 1, 8, 4, 16, 0]
+# Generated solution of heldkarp: [0, 11, 15, 19, 18, 3, 20, 7, 12, 5, 6, 14, 13, 17, 9, 10, 2, 1, 8, 4, 16, 0]
 path = [0, 11, 15, 19, 18, 3, 20, 7, 12, 5, 6, 14, 13, 17, 9, 10, 2, 1, 8, 4, 16, 0]
 od.kmeans(od.list_locations)
 od.print_solution(od.list_locations, path, od.x_k, od.y_k)

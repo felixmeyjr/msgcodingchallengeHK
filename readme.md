@@ -38,7 +38,10 @@ Das hat leider nicht so funktioniert, wie wir uns das gedacht haben. Daher haben
 
 ## Usage
 Simply run the heldkarp.py with the interpreter of your choice.
+Usage of heldkarp function (line 156) is commented out, to generate the optimal solution yourself, 
+you need to uncomment the function usage
 
-Einfach die heldkarp.py ausführen.
+Einfach die heldkarp.py ausführen. Die Funktion ist auskommentiert (line 156). Um die optimale Lösung zu generieren, 
+einfach die Funktion entkommentieren.
 
 
