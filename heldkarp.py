@@ -2,6 +2,7 @@ import itertools
 import time
 import numpy as np
 import geopy.distance
+import matplotlib.pyplot as plt
 
 
 file = "msg daten.csv"
@@ -107,11 +108,62 @@ class heldkarp():
 
         return opt, full_path
 
-od = heldkarp(file)
-cost, path = od.heldkarp(od.distance_matrix)
+    def print_solution(self, locations, loc_order, x_k, y_k):  # *argv
+        #for num, arg in enumerate(*argv):
+        #    x_k = arg if num == 0 else 0
+        #    y_k = arg if num == 1 else 0
+        loc, y, x = zip(*locations)
+        ordered_list_y = []
+        ordered_list_x = []
+        ordered_locations = []
+        for order in loc_order:
+            ordered_list_x.append(x[order])
+            ordered_list_y.append(y[order])
+            ordered_locations.append(locations[order][0])
+        plt.plot(ordered_list_x, ordered_list_y, '-o')
+        #if len(*argv) > 0:
+        plt.plot(x_k, y_k, 'ro')  # KMEANS
+        for i, j in enumerate(ordered_locations):
+            plt.annotate(xy=(ordered_list_x[i] + 0.2, ordered_list_y[i]), s=str(j))
+        plt.title("Locations of MSG")
+        plt.xlabel("Längengrad")
+        plt.ylabel("Breitengrad")
+        plt.show()
+        print("Solution:\t")
+        print("Order:\t\t\t", ordered_locations)
+        print("Order Nr.:\t\t", loc_order)
 
-print("Cost = ", cost)
-print("Path = ", path)
+    def kmeans(self, locations):
+        from sklearn.cluster import KMeans
+        plotlist = []
+        # plotlist.append(num for num, locyx in enumerate(locations))
+        for num, locyx in enumerate(locations):
+            plotlist.append([locyx[2], locyx[1]])
+        X = np.array([np.array(xi) for xi in plotlist])
+        kmeans = KMeans(n_clusters=4)
+        kmeans.fit(X)
+        print("Cluster", kmeans.cluster_centers_)
+        print("Labels", kmeans.labels_)
+        labels = kmeans.labels_
+        x_k = kmeans.cluster_centers_[:, 0]
+        y_k = kmeans.cluster_centers_[:, 1]
+
+        self.x_k = x_k
+        self.y_k = y_k
+
+
+od = heldkarp(file)
+# cost, path = od.heldkarp(od.distance_matrix)
+#
+# print("Cost = ", cost)
+# print("Path = ", path)
+
+# optimal path [0, 11, 15, 19, 18, 3, 20, 7, 12, 5, 6, 14, 13, 17, 9, 10, 2, 1, 8, 4, 16, 0]
+path = [0, 11, 15, 19, 18, 3, 20, 7, 12, 5, 6, 14, 13, 17, 9, 10, 2, 1, 8, 4, 16, 0]
+od.kmeans(od.list_locations)
+od.print_solution(od.list_locations, path, od.x_k, od.y_k)
+
+
 
 
 
