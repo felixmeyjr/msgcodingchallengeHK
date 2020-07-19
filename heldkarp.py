@@ -13,30 +13,6 @@ def get_distances(list_entry1, list_entry2):
     # Distance
     return geopy.distance.distance(coordinate1, coordinate2).km
 
-def from_data_to_distance_matrix(file):
-    # Ort, Breitengrad(y), Längengrad(x)
-    list_locations = []
-    with open(file, "r") as f:
-        lines = f.readlines()
-        for i, line in enumerate(lines):
-            if i == 0:  # header
-                continue
-            name_y_x = []
-            name = line.split(",")[1]
-            y = float(line.split(",")[6])
-            x = float(line.split(",")[7])
-            name_y_x.append(name)
-            name_y_x.append(y)
-            name_y_x.append(x)
-            list_locations.append(name_y_x)
-    distance_matrix = np.zeros((len(list_locations), len(list_locations)))
-    for i, row_i in enumerate(list_locations):
-        for j, row_j in enumerate(list_locations):
-            if i == j:
-                continue
-            else:
-                distance_matrix[i, j] = get_distances(row_i, row_j)
-    return distance_matrix, list_locations
 
 class heldkarp():
     def __init__(self, file):
