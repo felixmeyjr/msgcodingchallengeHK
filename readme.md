@@ -18,7 +18,10 @@ pip install matplotlib
 ```
 
 ## Algorithm
-The Held-Karp algorithm took 82s to run. Therefore a more faster solution was needed: We decided to use a K-means Clustering with k = 5, then nearest neighbor algorithm in the clusters.
-
+We used a Held Karp Algorithm. This Held-Karp algorithm implementation takes 82s to run. 
+Therefore a more faster solution was needed: 
+We decided to use a K-means Clustering,
+ get closests points of each cluster to each cluster, and calculates min. distances in the clusters.
+That didnt work very well, so back to HK-Algorithm.
 
 
