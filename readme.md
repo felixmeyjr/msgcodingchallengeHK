@@ -27,12 +27,12 @@ pip install matplotlib
 ## Algorithm
 We used a Held Karp Algorithm. This Held-Karp algorithm implementation takes 82s to run. 
 Therefore a more faster solution was needed: 
-We decided to use a K-means Clustering,
+We decided to use a K-means Clustering, (in plot red dots)
  get closests points of each cluster to each cluster, and calculates min. distances in the clusters.
 That didnt work very well, so back to HK-Algorithm.
 
 Wir haben einen Held-Karp Algorithmus gewählt. Dieser Algorithmus dauert 82s zum Ausführen. Daher wurde eine schnellere 
-Lösung gesucht: Ursprünglich war ein "exotischer" Ansatz gedacht: k-means auf die Punkte, die naheliegensten Cluster optimal verbinden 
+Lösung gesucht: Ursprünglich war ein "exotischer" Ansatz gedacht: k-means (rote Punkte im Plot) auf die Punkte, die naheliegensten Cluster optimal verbinden 
 und dann mit den Start- und Endpunkten im Cluster den kürzesten Weg zwischen alle Städten im Cluster finden.
 Das hat leider nicht so funktioniert, wie wir uns das gedacht haben. Daher haben wir auf den Held-Karp-Algo. zurückgegriffen.
 
